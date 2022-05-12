@@ -1,5 +1,16 @@
+import {
+  computeAccessibleName,
+  computeAccessibleDescription,
+} from "dom-accessibility-api";
+
 function initializeListeners() {
   window.addEventListener("click", () => {});
 }
 
-export { initializeListeners };
+function getProperties(element) {
+  return {
+    name: computeAccessibleName(element),
+  };
+}
+
+export { initializeListeners, getProperties };
