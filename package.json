@@ -1,0 +1,49 @@
+{
+  "name": "autoanalytics",
+  "version": "0.0.1",
+  "description": "automatic track all events on a web based on accessibility",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config config/jest.config.json",
+    "test:watch": "npm run test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalfageme/autoanalytics.git"
+  },
+  "keywords": [
+    "automatic",
+    "analytics"
+  ],
+  "author": "David Alfageme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalfageme/autoanalytics/issues"
+  },
+  "homepage": "https://github.com/dalfageme/autoanalytics#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0"
+  },
+  "dependencies": {
+    "aria-api": "^0.2.1",
+    "dom-accessibility-api": "^0.5.14",
+    "jest-environment-jsdom": "^28.1.0",
+    "jest-junit": "^13.2.0",
+    "ts-jest": "^28.0.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ]
+  },
+  "jest-junit": {
+     "suiteName": "jest tests",
+     "output": "results/tests/jest-junit.xml"
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ]
+}
