@@ -3,8 +3,10 @@ import {
   computeAccessibleDescription,
 } from "dom-accessibility-api";
 
-function initializeListeners() {
-  window.addEventListener("click", () => {});
+function initializeListeners({ handler }) {
+  window.addEventListener("click", () => {
+    handler();
+  });
 }
 
 function getProperties(element) {
