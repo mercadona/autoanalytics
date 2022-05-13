@@ -41,3 +41,25 @@ it("pass an object to the callback with the accesible name", () => {
     })
   );
 });
+
+it("has the element class in the event", () => {
+  const element = document.createElement("button");
+  element.innerHTML = "Add to cart";
+  document.body.innerHTML =
+    "<div>" +
+    '  <span id="username" />' +
+    '  <button id="button" class="shop__ad-to-cart enabled">Add to cart</button>' +
+    "</div>";
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.getElementsByTagName("button")[0].click();
+
+  expect(cb).toHaveBeenCalledWith(
+    expect.objectContaining({
+      classes: ["shop__ad-to-cart", "enabled"],
+    })
+  );
+});

@@ -16,7 +16,12 @@ function handler(event, callback) {
 function getProperties(element) {
   return {
     name: computeAccessibleName(element),
+    classes: getClasses(element),
   };
+}
+
+function getClasses(element) {
+  return element.classList.toString().split(" ");
 }
 
 export { initializeListeners, getProperties };
