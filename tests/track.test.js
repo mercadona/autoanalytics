@@ -1,14 +1,11 @@
 import { initializeListeners } from "index";
+import { webWithButton, webWithButtonAndIcon } from "./helpers";
 
 it("calls to track callback when click on element", () => {
   const element = document.createElement("button");
   element.innerHTML = "Add to cart";
 
-  document.body.innerHTML =
-    "<div>" +
-    '  <span id="username" />' +
-    '  <button id="button">Add to cart</button>' +
-    "</div>";
+  document.body.innerHTML = webWithButton;
 
   const cb = jest.fn();
   initializeListeners({
@@ -23,11 +20,7 @@ it("pass an object to the callback with the accesible name", () => {
   const element = document.createElement("button");
   element.innerHTML = "Add to cart";
 
-  document.body.innerHTML =
-    "<div>" +
-    '  <span id="username" />' +
-    '  <button id="button">Add to cart</button>' +
-    "</div>";
+  document.body.innerHTML = webWithButton;
 
   const cb = jest.fn();
   initializeListeners({
@@ -45,11 +38,7 @@ it("pass an object to the callback with the accesible name", () => {
 it("has the element class in the event", () => {
   const element = document.createElement("button");
   element.innerHTML = "Add to cart";
-  document.body.innerHTML =
-    "<div>" +
-    '  <span id="username" />' +
-    '  <button id="button" class="shop__ad-to-cart enabled">Add to cart</button>' +
-    "</div>";
+  document.body.innerHTML = webWithButton;
 
   const cb = jest.fn();
   initializeListeners({
@@ -60,6 +49,45 @@ it("has the element class in the event", () => {
   expect(cb).toHaveBeenCalledWith(
     expect.objectContaining({
       classes: ["shop__ad-to-cart", "enabled"],
+    })
+  );
+});
+
+it("get the info from the correct element", () => {
+  const element = document.createElement("button");
+  element.innerHTML = "Add to cart";
+  document.body.innerHTML = webWithButtonAndIcon;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.querySelector(".icon").click();
+
+  expect(cb).toHaveBeenCalledWith(
+    expect.objectContaining({
+      classes: ["shop__ad-to-cart", "enabled"],
+    })
+  );
+});
+
+it("adds the info from the targeted element", () => {
+  const element = document.createElement("button");
+  element.innerHTML = "Add to cart";
+  document.body.innerHTML = webWithButtonAndIcon;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.querySelector(".icon").click();
+
+  expect(cb).toHaveBeenCalledWith(
+    expect.objectContaining({
+      targetedElement: {
+        classes: ["icon"],
+        tag: "I",
+      },
     })
   );
 });
