@@ -110,7 +110,7 @@ it("adds context to the event", () => {
   );
 });
 
-fit("does not fail when click in any place outside a button", () => {
+it("does not fail when click in any place outside a button", () => {
   const element = document.createElement("button");
   element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithHeader;
@@ -122,4 +122,18 @@ fit("does not fail when click in any place outside a button", () => {
   document.querySelector("h1").click();
 
   expect(cb).toHaveBeenCalledWith(expect.objectContaining({ name: "Shop" }));
+});
+
+it("has the event type", () => {
+  const element = document.createElement("button");
+  element.innerHTML = "Add to cart";
+  document.body.innerHTML = webWithHeader;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.querySelector("h1").click();
+
+  expect(cb).toHaveBeenCalledWith(expect.objectContaining({ type: "click" }));
 });

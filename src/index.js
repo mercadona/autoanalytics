@@ -19,11 +19,10 @@ function handler(event, callback) {
 function getProperties(element) {
   const importantElement = getImportantElement(element);
   return {
-    // event: "click",
+    type: "click",
     name: computeAccessibleName(importantElement),
     description: computeAccessibleDescription(importantElement),
     classes: getClasses(importantElement),
-    // text: importantElement.innerText,
     context: getContext(importantElement),
     targetedElement: {
       classes: getClasses(element),
