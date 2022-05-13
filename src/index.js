@@ -4,7 +4,7 @@ import {
   computeAccessibleDescription,
 } from "dom-accessibility-api";
 
-const IMPORTANT_ROLES = ["button", "link", "checkbox", "radio"];
+const IMPORTANT_ROLES = ["button", "link", "checkbox", "radio", "heading"];
 
 function initializeListeners({ handler: callback }) {
   window.addEventListener("click", (event) => {
@@ -19,8 +19,12 @@ function handler(event, callback) {
 function getProperties(element) {
   const importantElement = getImportantElement(element);
   return {
+    // event: "click",
     name: computeAccessibleName(importantElement),
+    description: computeAccessibleDescription(importantElement),
     classes: getClasses(importantElement),
+    // text: importantElement.innerText,
+    context: getContext(importantElement),
     targetedElement: {
       classes: getClasses(element),
       tag: element.tagName,
@@ -30,6 +34,22 @@ function getProperties(element) {
 
 function getClasses(element) {
   return element.classList.toString().split(" ");
+}
+
+function getContext(element) {
+  const parent = element.parentElement;
+
+  if (!parent || element.tagName === "BODY") {
+    return "";
+  }
+
+  const accessibleName = computeAccessibleName(parent);
+
+  if (accessibleName) {
+    return accessibleName;
+  }
+
+  return getContext(parent.parentElement);
 }
 
 function getImportantElement(element) {

@@ -1,5 +1,5 @@
 import { initializeListeners } from "index";
-import { webWithButton, webWithButtonAndIcon } from "./helpers";
+import { webWithButton, webWithButtonAndIcon, webWithHeader } from "./helpers";
 
 it("calls to track callback when click on element", () => {
   const element = document.createElement("button");
@@ -90,4 +90,36 @@ it("adds the info from the targeted element", () => {
       },
     })
   );
+});
+
+it("adds context to the event", () => {
+  const element = document.createElement("button");
+  element.innerHTML = "Add to cart";
+  document.body.innerHTML = webWithButtonAndIcon;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.querySelector(".icon").click();
+
+  expect(cb).toHaveBeenCalledWith(
+    expect.objectContaining({
+      context: "Brand new shoes",
+    })
+  );
+});
+
+fit("does not fail when click in any place outside a button", () => {
+  const element = document.createElement("button");
+  element.innerHTML = "Add to cart";
+  document.body.innerHTML = webWithHeader;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.querySelector("h1").click();
+
+  expect(cb).toHaveBeenCalledWith(expect.objectContaining({ name: "Shop" }));
 });

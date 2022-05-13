@@ -2,7 +2,7 @@
   "name": "autoanalytics",
   "version": "0.0.1",
   "description": "automatic track all events on a web based on accessibility",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest --config config/jest.config.json",
     "test:watch": "npm run test -- --watch"
@@ -39,8 +39,8 @@
     ]
   },
   "jest-junit": {
-     "suiteName": "jest tests",
-     "output": "results/tests/jest-junit.xml"
+    "suiteName": "jest tests",
+    "output": "results/tests/jest-junit.xml"
   },
   "moduleDirectories": [
     "node_modules",
