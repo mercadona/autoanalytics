@@ -13,17 +13,26 @@ function initializeListeners({ handler: callback }) {
 }
 
 function handler(event, callback) {
-  return callback(getProperties(event.target));
+  const properties = getProperties(event.target);
+
+  if (properties) {
+    callback(properties);
+  }
 }
 
 function getProperties(element) {
   const importantElement = getImportantElement(element);
+
+  if (!importantElement) {
+    return;
+  }
+
   return {
     type: "click",
     name: computeAccessibleName(importantElement),
-    description: computeAccessibleDescription(importantElement),
     classes: getClasses(importantElement),
     context: getContext(importantElement),
+    occurredAt: new Date(),
     targetedElement: {
       classes: getClasses(element),
       tag: element.tagName,
