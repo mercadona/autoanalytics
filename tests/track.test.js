@@ -16,10 +16,7 @@ it("calls to track callback when click on element", () => {
   expect(cb).toHaveBeenCalledTimes(1);
 });
 
-it("pass an object to the callback with the accesible name", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
-
+it("pass an object to the callback with the accessible name", () => {
   document.body.innerHTML = webWithButton;
 
   const cb = jest.fn();
@@ -36,8 +33,6 @@ it("pass an object to the callback with the accesible name", () => {
 });
 
 it("has the element class in the event", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithButton;
 
   const cb = jest.fn();
@@ -54,8 +49,6 @@ it("has the element class in the event", () => {
 });
 
 it("get the info from the correct element", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithButtonAndIcon;
 
   const cb = jest.fn();
@@ -72,8 +65,6 @@ it("get the info from the correct element", () => {
 });
 
 it("adds the info from the targeted element", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithButtonAndIcon;
 
   const cb = jest.fn();
@@ -93,8 +84,6 @@ it("adds the info from the targeted element", () => {
 });
 
 it("adds context to the event", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithButtonAndIcon;
 
   const cb = jest.fn();
@@ -111,8 +100,6 @@ it("adds context to the event", () => {
 });
 
 it("does not fail when click in a header", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithHeader;
 
   const cb = jest.fn();
@@ -125,8 +112,6 @@ it("does not fail when click in a header", () => {
 });
 
 it("does not fail when click in any place outside of important element", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithButton;
 
   const cb = jest.fn();
@@ -139,8 +124,6 @@ it("does not fail when click in any place outside of important element", () => {
 });
 
 it("has the event type", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
   document.body.innerHTML = webWithHeader;
 
   const cb = jest.fn();

@@ -1,6 +1,6 @@
 {
   "name": "autoanalytics",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "automatic track all events on a web based on accessibility",
   "main": "src/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "analytics"
   ],
   "author": "David Alfageme",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/dalfageme/autoanalytics/issues"
   },

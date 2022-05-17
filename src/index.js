@@ -81,4 +81,4 @@ function getImportantElement(element) {
   return importantElement;
 }
 
-export { initializeListeners, getProperties };
+export { initializeListeners };
