@@ -18,4 +18,10 @@ const webWithHeader =
   "  </button>" +
   "</div>";
 
-export { webWithButton, webWithButtonAndIcon, webWithHeader };
+const webWithLink =
+  "<div aria-label='Brand new shoes'>" +
+  '  <a id="link" href="https://google.com">' +
+  "  </a>" +
+  "</div>";
+
+export { webWithButton, webWithButtonAndIcon, webWithHeader, webWithLink };

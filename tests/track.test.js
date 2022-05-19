@@ -1,5 +1,10 @@
 import { initializeListeners } from "index";
-import { webWithButton, webWithButtonAndIcon, webWithHeader } from "./helpers";
+import {
+  webWithButton,
+  webWithButtonAndIcon,
+  webWithHeader,
+  webWithLink,
+} from "./helpers";
 
 it("calls to track callback when click on element", () => {
   const element = document.createElement("button");
@@ -150,5 +155,19 @@ it("has the event date", () => {
 
   expect(cb).toHaveBeenCalledWith(
     expect.objectContaining({ occurredAt: mockedDate })
+  );
+});
+
+it("includes the href attribute for <a> elements", () => {
+  document.body.innerHTML = webWithLink;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.querySelector("a").click();
+
+  expect(cb).toHaveBeenCalledWith(
+    expect.objectContaining({ href: "https://google.com/" })
   );
 });

@@ -37,6 +37,7 @@ function getProperties(element) {
       classes: getClasses(element),
       tag: element.tagName,
     },
+    href: importantElement.href,
   };
 }
 
