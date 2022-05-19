@@ -1,4 +1,7 @@
 # AUTOANALYTICS
+
+<img src="https://user-images.githubusercontent.com/10475683/168904901-fac935c0-5227-43ed-9eb5-f9f245b94967.png" width="100" height="100">
+
 Autoanalytics is a library to automatic track click events on a web based on accessibility that works inside any library or framework like React or Angular.
 
 
