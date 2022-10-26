@@ -10,6 +10,7 @@ function initializeListeners({ handler: callback }) {
   window.addEventListener("click", (event) => {
     handler(event, callback);
   });
+  emitPageLoadEvent(callback);
 }
 
 function handler(event, callback) {
@@ -81,6 +82,14 @@ function getImportantElement(element) {
   }
 
   return importantElement;
+}
+
+function emitPageLoadEvent(callback) {
+  callback({
+    type: "load-page",
+    path: window.location.pathname,
+    occurredAt: new Date(),
+  });
 }
 
 export { initializeListeners };

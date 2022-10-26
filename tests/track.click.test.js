@@ -6,21 +6,6 @@ import {
   webWithLink,
 } from "./helpers";
 
-it("calls to track callback when click on element", () => {
-  const element = document.createElement("button");
-  element.innerHTML = "Add to cart";
-
-  document.body.innerHTML = webWithButton;
-
-  const cb = jest.fn();
-  initializeListeners({
-    handler: cb,
-  });
-  document.getElementsByTagName("button")[0].click();
-
-  expect(cb).toHaveBeenCalledTimes(1);
-});
-
 it("pass an object to the callback with the accessible name", () => {
   document.body.innerHTML = webWithButton;
 
@@ -125,7 +110,11 @@ it("does not fail when click in any place outside of important element", () => {
   });
   document.querySelector("div").click();
 
-  expect(cb).not.toHaveBeenCalled();
+  expect(cb).not.toHaveBeenCalledWith(
+    expect.objectContaining({
+      type: "click",
+    })
+  );
 });
 
 it("has the event type", () => {
