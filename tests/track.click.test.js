@@ -171,3 +171,21 @@ it("includes the href attribute for <a> elements", () => {
     expect.objectContaining({ href: "https://google.com/" })
   );
 });
+
+it("has the current path", () => {
+  delete window.location;
+  window.location = new URL("https://www.example.com/sample/path/");
+  document.body.innerHTML = webWithButton;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.getElementsByTagName("button")[0].click();
+
+  expect(cb).toHaveBeenCalledWith(
+    expect.objectContaining({
+      path: "/sample/path/",
+    })
+  );
+});

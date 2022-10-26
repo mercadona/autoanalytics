@@ -38,6 +38,7 @@ function getProperties(element) {
       tag: element.tagName,
     },
     href: importantElement.href,
+    path: window.location.pathname,
   };
 }
 
