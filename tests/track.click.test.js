@@ -156,9 +156,7 @@ it("includes the href attribute for <a> elements", () => {
   });
   document.querySelector("a").click();
 
-  expect(cb).toHaveBeenCalledWith(
-    expect.objectContaining({ href: "https://google.com/" })
-  );
+  expect(cb).toHaveBeenCalledWith(expect.objectContaining({ href: "/page" }));
 });
 
 it("has the current path", () => {

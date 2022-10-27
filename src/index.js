@@ -38,7 +38,7 @@ function getProperties(element) {
       classes: getClasses(element),
       tag: element.tagName,
     },
-    href: importantElement.href,
+    href: importantElement.getAttribute("href"),
     path: window.location.pathname,
   };
 }

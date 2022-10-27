@@ -20,7 +20,7 @@ const webWithHeader =
 
 const webWithLink =
   "<div aria-label='Brand new shoes'>" +
-  '  <a id="link" href="https://google.com">' +
+  '  <a id="link" href="/page">' +
   "  </a>" +
   "</div>";
 
