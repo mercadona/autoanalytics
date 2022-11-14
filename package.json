@@ -1,6 +1,6 @@
 {
   "name": "autoanalytics",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "automatic track all events on a web based on accessibility",
   "main": "src/index.js",
   "scripts": {
