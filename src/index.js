@@ -48,7 +48,7 @@ function getClasses(element) {
 }
 
 function getContext(element) {
-  const parent = element.parentElement;
+  const parent = element?.parentElement;
 
   if (!parent || element.tagName === "BODY") {
     return "";
@@ -60,7 +60,7 @@ function getContext(element) {
     return accessibleName;
   }
 
-  return getContext(parent.parentElement);
+  return getContext(parent);
 }
 
 function getImportantElement(element) {

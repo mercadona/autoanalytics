@@ -4,6 +4,7 @@ import {
   webWithButtonAndIcon,
   webWithHeader,
   webWithLink,
+  webWithButtonAndIconMultipleDivs,
 } from "./helpers";
 
 it("pass an object to the callback with the accessible name", () => {
@@ -80,7 +81,23 @@ it("adds context to the event", () => {
   initializeListeners({
     handler: cb,
   });
-  document.querySelector(".icon").click();
+  document.querySelector("button").click();
+
+  expect(cb).toHaveBeenCalledWith(
+    expect.objectContaining({
+      context: "Brand new shoes",
+    })
+  );
+});
+
+it("adds context to the event of the first parent element with data found", () => {
+  document.body.innerHTML = webWithButtonAndIconMultipleDivs;
+
+  const cb = jest.fn();
+  initializeListeners({
+    handler: cb,
+  });
+  document.querySelector("button").click();
 
   expect(cb).toHaveBeenCalledWith(
     expect.objectContaining({
